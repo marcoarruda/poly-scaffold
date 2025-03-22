@@ -46,13 +46,13 @@ const parseArgs = () => {
       description: 'Target path for generated files'
     })
     .option('javascript', {
-      alias: 'js',
+      alias: 'j',
       type: 'boolean',
       default: false,
       description: 'Generate JavaScript files instead of TypeScript'
     })
     .option('templatesPath', {
-      alias: 'tp',
+      alias: 'p',
       type: 'string',
       description: 'Path to the templates folder'
     })
@@ -81,7 +81,7 @@ export async function main() {
 
   let resourceFromArgs = args.resource;
 
-  if (!resourceFromArgs && !args._[0].includes(':')) {
+  if (!resourceFromArgs && args._[0] && !args._[0].includes(':')) {
     resourceFromArgs = args._.shift();
   }
 
@@ -97,7 +97,7 @@ export async function main() {
   // Prompt for target path if not provided
   const target = args.target || await input({
     message: 'Please enter the path where the file will be created:',
-    default: 'tmp/src',
+    default: '.',
     validate: (value) => value.trim() ? true : 'Target path cannot be empty'
   });
 

@@ -22,6 +22,7 @@ export function AppProvider({ children }) {
   );
 }
 
+import axios from "axios";
 import {
   useForm,
   FormProvider as FormProviderBase,
@@ -38,7 +39,7 @@ export function FormProvider({ children, values, resolver, onSubmit }) {
     try {
       await onSubmit(fields.data);
     } catch (error) {
-      if (error.response?.status === 422) {
+      if (axios.isAxiosError(error) && error.response?.status === 422) {
         const serverError = error.response.data;
 
         for (const attribute in serverError) {

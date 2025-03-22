@@ -2,12 +2,48 @@
 
 Poly Scaffold is a command-line tool for generating scaffold code for various frameworks. It prompts the user for necessary inputs and generates the required files in the specified target directory.
 
+## Motivation
+
+Throughout my journey as a developer, I have always sought tools that optimize learning and increase productivity. One of the frameworks that helped me the most in this regard was **Ruby on Rails**, especially through its **scaffold** command. It not only allowed me to quickly generate CRUD structures but also served as a practical reference for understanding how system components interact. Additionally, as new best practices and patterns emerged, the scaffold reflected these changes, keeping me up to date with modern development approaches.
+
+In the JavaScript ecosystem, particularly with **Next.js** and **Nuxt.js**, I noticed the lack of a similar tool: one that could not only speed up CRUD creation but also serve as a guide for new developers while ensuring standardized and scalable code.
+
+Thus, **Poly-Scaffold** was born. It is designed to:
+
+- **Provide a solid and structured foundation** for CRUDs across major modern JavaScript frameworks.
+- **Reduce repetitive code** when implementing common operations like creating, reading, updating, and deleting records.
+- **Maintain a clean and organized project structure**, facilitating collaboration among developers.
+- **Incorporate best practices from the ecosystem**, allowing new developers to learn and apply modern concepts while building their projects.
+- **Unify common approaches** across different frameworks, making CRUD development more consistent and predictable.
+
+Beyond leveraging each framework’s native structure, **Poly-Scaffold** enhances it with some of the most widely used libraries to improve efficiency and robustness:
+
+- **[Zod](https://github.com/colinhacks/zod)** – Schema validation to ensure data integrity.
+- **[TanStack Query](https://tanstack.com/query/latest)** – Advanced caching and asynchronous data fetching management.
+- **[Axios](https://axios-http.com/)** – Simplified API consumption with an intuitive HTTP client.
+- **Integrated Form Validation** – Adopting best practices for each framework to ensure functional and accessible forms.
+
+With this approach, **Poly-Scaffold** does more than generate code—it establishes a modern and optimized workflow, allowing developers to focus on business logic rather than repetitive implementation details.
+
+## Features
+
+- 🏗️ **Scaffolding for CRUD operations** – Quickly generate models, services, and UI components.
+- 📦 **Multi-framework support** – Compatible with Next.js, Nuxt.js, Next.js + ShadCN, and Nuxt.js + ShadCN.
+- ⚡ **Optimized API calls** – Uses Axios and TanStack Query for efficient data fetching and caching.
+- 🎨 **Pre-styled UI components** — When using ShadCN, components come pre-styled and ready for production. Scaffolding without any advanced style features is also available, giving you total control over what you need.
+- 📚 **Type-safe validation** – Powered by Zod to ensure consistent and secure data handling.
+- 🔄 **Reusability and extensibility** – Easily customizable to fit different project requirements.
+
 ## Installation
 
 To install the dependencies, run:
 
 ```bash
-npm install
+npm install -D poly-scaffold
+# or
+yarn add -D poly-scaffold
+# or
+pnpm add -D poly-scaffold
 ```
 
 ## Usage
@@ -15,8 +51,10 @@ npm install
 You can run the tool using the following command:
 
 ```bash
-node src/scaffold.js
+pscaffold post title:string body:text
 ```
+
+<a id="command-line-options"></a>
 
 ### Command Line Options
 
@@ -25,13 +63,13 @@ node src/scaffold.js
 - `--framework, -f`: Framework to use for scaffolding [string]
 - `--resource, -r`: Resource name to scaffold [string]
 - `--target, -t`: Target path for generated files [string]
-- `--javascript, --js`: Generate JavaScript files instead of TypeScript [boolean] [default: false]
-- `--templatesPath, --tp`: Specify a custom template path. Leave blank to use the default templates for the selected framework [string]
+- `--javascript, -j`: Generate JavaScript files instead of TypeScript [boolean] [default: false]
+- `--templatesPath, -p`: Specify a custom template path. Leave blank to use the default templates for the selected framework [string]
 
 ### Example
 
 ```bash
-pscaffold next post title:string description:text -t ./
+pscaffold post title:string description:text -t ./
 
 # Result:
 
