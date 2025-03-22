@@ -87,7 +87,6 @@ export async function generateFiles({
       substitutions,
     );
 
-    console.log(filePath, computedPath);
 
     const newFileContent = render(filePath, substitutions);
 
